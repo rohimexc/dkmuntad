@@ -1,0 +1,113 @@
+{% extends './navbar.html' %}
+{% load static %}
+{% block javascript %}
+
+<script>
+    document.getElementById("downloadBtn").addEventListener("click", function(){
+        // Get data from DataTable
+        var table = $('#dataTable').DataTable();
+        var data = table.data().toArray();
+    
+        // Create workbook and worksheet
+        var workbook = XLSX.utils.book_new();
+        var worksheet = XLSX.utils.aoa_to_sheet(data);
+    
+        // Add worksheet to workbook
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    
+        // Convert workbook to XLSX file and download
+        XLSX.writeFile(workbook, 'data.xlsx');
+    });
+</script>
+
+{% endblock %}
+{% block content %}
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Database DKM</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Home</a></li>
+          <li class="breadcrumb-item active">Database DKM</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center table">
+                            <h5 class="card-title">Database</h5>
+                            <button class="btn btn-primary" id="downloadBtn"><i class="bi bi-download"></i>Download</button>
+                            {% if request.user.is_superuser %}
+                            <a href="{% url 'refresh' %}" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i>Refresh</a>
+                            {% endif %}
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>ID</th>
+                                        <th>NIM</th>
+                                        <th>Prodi</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Email</th>
+                                        <th>No. HP</th>
+                                        <th>Jabatan</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>ID</th>
+                                        <th>NIM</th>
+                                        <th>Prodi</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Email</th>
+                                        <th>No. HP</th>
+                                        <th>Status</th>
+                                        <th>Jabatan</th>
+                                        <th>Aksi</th>
+                                        
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    {% for a in dkm %}
+                                    <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{a.id_dkm}}</td>
+                                        <td>{{a.nim_nidn}}</td>
+                                        <td>{{a.prodi}}</td>
+                                        <td>{{a.name}}</td>
+                                        <td>{{a.email}}</td>
+                                        <td>{{a.phone}}</td>
+                                        <td>{{a.jabatan}}</td>
+                                        <td>{{a.status}}</td>
+                                        <td>
+                                            <a href='{% url 'edit' a.id_dkm %}' class="btn btn-warning btn-sm btn-icon"><i class="bi bi-pencil-square"></i></a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </main>
+
+  
+  <!-- End #main -->
+
+  
+{% endblock content %}

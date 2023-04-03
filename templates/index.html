@@ -1,0 +1,744 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>DKM UNTAD</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+
+  <!-- =======================================================
+  * Template Name: Bootslander
+  * Updated: Mar 10 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1><a href="{% url 'index' %}"><span>Home</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#gallery">Post</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a type='button' data-toggle="modal" class="nav-link scrollto text-white" id="database" data-target="modal">Database</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+      <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModal1Title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModal1Title">Modal 1 title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Modal 1 content
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Authentication</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form method="post" action="{% url 'database' %}">
+            <div class="modal-body">
+                {% csrf_token %}
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Masukkan ID Anggota anda" required="">
+              
+              </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="{% static 'vendor/bootstrap/js/popper.min.js' %}"></script>
+      <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+      <script>
+        var modal = document.getElementById('modal');
+
+        // Get the link element that triggers the modal
+        var link = document.getElementById('database');
+
+        // When the user clicks on the link, show the modal
+        link.addEventListener('click', function() {
+          modal.style.display = 'block';
+        });
+
+        // When the user clicks on the close button or outside the modal, dismiss the modal
+        window.addEventListener('click', function(event) {
+          if (event.target == modal || event.target.getAttribute('data-dismiss') == 'modal') {
+            modal.style.display = 'none';
+          }
+        });
+      </script>
+
+    </div>
+  </header><!-- End Header -->
+  
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+          <div data-aos="zoom-out">
+            <h1>Duta Kampus Merdeka</h1>
+            <h1>Universitas Tadulako</h1>
+            <h2>Wadah Akselerasi Kampus Merdeka</h2>
+            <div class="text-center text-lg-start">
+              <a href="#about" class="btn-get-started scrollto">Get Started</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+          <img src="{% static 'img/hero-img.png' %}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div> 
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" data-aos="fade-right">
+            <a href="https://www.instagram.com/dkmuntad/" class="glightbox play-btn mb-4"></a>
+          </div>
+
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
+            <h3>Apa itu Duta Kampus Merdeka?</h3>
+            <p>komunitas para mahasiswa alumni MBKM yang tergerak untuk berkontribusi dalam mengakselerasi, mengsosialisasi dan mengimplementasi Merdeka Belajar – Kampus Merdeka di lingkungan Universitas Tadulako</p>
+
+            <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
+              <div class="icon"><i class="bi bi-people"></i></div>
+              <h4 class="title"><a href="">Pendampingan</a></h4>
+              <p class="description">Melakukan pendampingan kepada mahasiswa yang akan dan sedang mengikuti Program MBKM</p>
+            </div>
+
+            <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
+              <div class="icon"><i class="bi bi-person-rolodex"></i></div>
+              <h4 class="title"><a href="">Go to Person</a></h4>
+              <p class="description">Go to Person dalam mengajak mahasiswa untuk mengikuti program MBKM</p>
+            </div>
+
+            <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
+              <div class="icon"><i class="bi bi-arrows-move"></i></div>
+              <h4 class="title"><a href="">Perpanjangan Tangan</a></h4>
+              <p class="description">Membantu MBKM UNTAD dalam akselerasi program MBKM di Universitas Tadulako sesuai dengan kebutuhan</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container">
+
+        <div class="row" data-aos="fade-up">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="count-box">
+              <i class="bi bi-mortarboard-fill"></i>
+              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter"></span>
+              <p>DKM Dosen</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+            <div class="count-box">
+              <i class="bi bi-mortarboard"></i>
+              <span data-purecounter-start="0" data-purecounter-end="52" data-purecounter-duration="1" class="purecounter"></span>
+              <p>DKM Mahasiswa</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="bi bi-collection"></i>
+              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Divisi</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="bi bi-rocket-takeoff"></i>
+              <span data-purecounter-start="0" data-purecounter-end="40" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Fasilitator</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+    <section id="gallery" class="team">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Post</h2>
+          <p>New Post</p>
+        </div>
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="10">
+          <div class="swiper-wrapper" data-aos="fade-left">
+
+            <div class="swiper-slide">
+              <div class="row mt-3">
+                {% for a in post %}
+                <div class="col-md-4">
+                  <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="pic"><img src="../media/{{a.post}}" class="img-fluid" alt="post"></div>
+                    <div class="member-info">
+                      <h4>{{a.judul}}</h4>
+                      <span>{{a.caption}}</span>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+            {% for a in testimoni %}
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                {% if a.nama.photo %}
+                <img src="../media/{{a.nama.photo}} class="testimonial-img" alt="">
+                {% else %}
+                <img src="{% static 'img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
+                {% endif %}
+                <h3>{{a.nama}}</h3>
+                <h4>{{a.nama.jabatan}}</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  {{a.testimoni}}
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+            {% endfor %}
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
+                <h3>Sara Wilsson</h3>
+                <h4>Designer</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
+                <h3>Jena Karlis</h3>
+                <h4>Store Owner</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
+                <h3>Matt Brandon</h3>
+                <h4>Freelancer</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
+                <h3>John Larson</h3>
+                <h4>Entrepreneur</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+        <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+    <section id="team" class="section_team">
+        
+      <div class="swiper_team mySwiper container" data-aos="zoom-in" data-aos-delay="100">
+        
+        <div class="swiper-wrapper content">
+          {% for a in data_ketua %}
+          <div class="swiper-slide card_team">
+            <div class="card-content">
+              
+                <div class="image">
+                  
+                  {% if a.photo %}
+                  <img src="././media/{{a.photo}}" class="img-fluid" alt="">
+                  {% else %}
+                    {% if a.gender == 'female' %}
+                    <img src="{% static 'img/team/team-2.jpg' %}" class="img-fluid" alt="">
+                    {% else %}
+                    <img src="{% static 'img/team/team-3.jpg' %}" class="img-fluid" alt="">
+                    {% endif %}
+                  {% endif %}
+                </div>
+                <div class="media-icons_team">
+                  <a href="https://wa.me/+62{{a.phone}}"><i class="fab fa-whatsapp"></i></a>
+                  <a href=""><i class="fab fa-instagram"></i></a>
+                  <a href=""><i class="fab fa-linkedin"></i></a>
+                </div>
+                
+                <div class="name-profession_team">
+                  <span class="name_team">{{a.name}}</span>
+                  <span class="profession_team">{{a.jabatan}}</span>
+                </div>
+  
+
+                <div class="rating_team" id="hides{{a.id}}">
+                  {% for i in "12345" %}
+                    {% if a.rating|floatformat >= i %}
+                      <i class="fas fa-star"></i>
+                    {% else %}
+                      <i class="far fa-star"></i>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                
+                <div id="show{{a.id}}" style="display:none;">
+                  <form method="POST" action="{% url 'ulasan' a.id_dkm %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <div class="rating_team start-rating">
+                        <i class="far fa-star" data-star-value="1"></i>
+                        <i class="far fa-star" data-star-value="2"></i>
+                        <i class="far fa-star" data-star-value="3"></i>
+                        <i class="far fa-star" data-star-value="4"></i>
+                        <i class="far fa-star" data-star-value="5"></i>
+                      </div>
+                      <input type="hidden" name="rating" id="rating{{a.id}}" value="">
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-11">
+                        <textarea class="form-control" name="comment" id="comment" rows="2" placeholder="masukkan ulasanmu disini"></textarea>
+                      </div>
+                      <div class="form-group col-md-1">
+                        <button type="submit" class="btn btn-sm btn-primary btn-icon" id="submitaja"><i class="bi bi-caret-right"></i></button>
+                      </div>
+                      
+                    </div>
+                    </form>
+                </div>
+
+                <div class="button_team" id="hidess{{a.id}}">
+                  <button class="aboutMe">
+                    <a class="text-white" href="{% url 'tim' a.id_dkm %}">Our Team</a>
+                  </button>
+                  <button class="hireMe" data-id="{{a.id}}">Beri Ulasan</button>
+                  
+                </div>
+                <script>
+                  document.querySelectorAll('.hireMe').forEach(function(button) {
+                    button.addEventListener('click', function() {
+                      document.getElementById('hides' + this.dataset.id).style.display = 'none';
+                      document.getElementById('hidess' + this.dataset.id).style.display = 'none';
+                      document.getElementById('show' + this.dataset.id).style.display = 'flex';
+                    });
+                  });
+                </script>
+                
+                <script src="{% static 'jquery/jquery.min.js' %}"></script>
+                <script>
+                  $(document).ready(function() {
+                    $('.start-rating i').click(function() {
+                      var starValue = parseInt($(this).data('star-value'));
+                      if (starValue >= 0 && starValue <= 5) {
+                        $('#rating{{a.id}}').val(starValue);
+                        $(this).parent().children('i').removeClass('fas').addClass('far');
+                        $(this).prevAll().addBack().removeClass('far').addClass('fas');
+                      }
+                    });
+                    
+                  });
+                  
+                  
+                </script>
+                
+
+            </div>
+          </div>
+
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+
+      
+    </section>
+  
+
+
+  <!-- Swiper JS -->
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+
+
+
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        slidesPerGroup: 1,
+        breakpoints: {
+          1366: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            slidesPerGroup: 3
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            slidesPerGroup: 3
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            slidesPerGroup: 2
+          },
+          300: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            slidesPerGroup: 1
+          }
+        },
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        
+      });
+    </script>
+    <script>
+      function rotateCard() {
+        var card = document.querySelector('.card-content');
+        var back = document.querySelector('.card-content.card-back');
+        card.classList.toggle('rotate');
+        back.classList.toggle('show-back');
+      }
+      
+      document.querySelector('.aboutMe').addEventListener('click', rotateCard());
+                
+    </script>
+
+
+    
+
+
+    <!-- ======= F.A.Q Section ======= -->
+    <section id="faq" class="faq section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>F.A.Q</h2>
+          <p>Frequently Asked Questions</p>
+        </div>
+
+        <div class="faq-list">
+          <ul>
+            <li data-aos="fade-up">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Bagaimana cara mendaftar diSITAMPAN?<span class="badge badge-primary ml-2">Admin</span><i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                <p>
+                  Cara daftar diSITAMPAN dapat kamu akses pada halaman <a class="d-inline pl-0 pr-0" href='https://mbkm.untad.ac.id/panduan-login-sitampan/'>panduan pendaftaran</a>
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Bagamana cara update IPK dan SKS di SITAMPAN?<span class="badge badge-primary ml-2">Admin</span><i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                  Untuk melakukan update IPK dan SKS diSITAMPAN terdiri dari dua cara sebagai berikut:
+                <ol>
+                  <li class='pb-0'>Bagi pengguna SIAT dapat menggunakan fitur update pada profil masing-masing </li>
+                  <li class='pt-0 pb-0'>Bagi pengguna SILA  dapat menggunakan fitur update manual pada menu profil masing-masing dengan ketentuan upload transkip nilai </li>
+                </ol>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Apa saja jenis-jenis program Merdeka Belajar Kampus Merdeka (MBKM)?<span class="badge badge-primary ml-2">Admin</span><i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Merdeka Belajar Kampus Merdeka terdiri dari beberapa program yaitu:
+                  <ol>
+                    <li class='pb-0'>Pertukaran Mahasiswa Merdeka (PMM)</li>
+                    <li class='pt-0 pb-0'>MSIB Magang</li>
+                    <li class='pt-0 pb-0'>MSIB Studi Studi Independen</li>
+                    <li class='pt-0 pb-0'>Indonesian International Student Mobility Awards (IISMA)</li>
+                    <li class='pt-0 pb-0'>Kampus Mengajar</li>
+                    <li class='pt-0 pb-0'>Wirausaha Merdeka</li>
+                    <li class='pt-0 pb-0'>Riset/Penelitian</li>
+                    <li class='pt-0 pb-0'>KKNT/Bina Desa</li>
+                    <li class='pt-0 pb-0'>Bela Negara</li>
+                  </ol>
+
+                </p>
+              </div>
+            </li>
+            {% for a in pertanyaan %}
+            <li data-aos="fade-up" data-aos-delay="{{forloop.counter|add:2}}00">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-{{forloop.counter|add:3}}" class="collapsed">{{a.pertanyaan}}<span class="badge badge-primary ml-2">{{a.nama}}</span><i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-{{forloop.counter|add:3}}" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  {{a.jawaban | default:'Belum Dijawab'}}<span class="badge badge-dark ml-2">{{a.pemberi_jawaban | default:''}}</span>
+                </p>
+              </div>
+            </li>
+            {% endfor %}
+            <li data-aos="fade-up" data-aos-delay="500">
+              <a href="{% url 'faq' %}" class="btn btn primary" data-bs-parent=".faq-list">Baca Selengkapnya</a>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </section><!-- End F.A.Q Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Contact</h2>
+          <p>Contact Us</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4" data-aos="fade-right" data-aos-delay="100">
+            <div class="info">
+              <div class="address">
+                <a href="https://maps.app.goo.gl/mrVPAYLgyx5SeY4G7" ><i class="bi bi-geo-alt"></i></a>
+                <h4>Location:</h4>
+                <p>Lt.2 Perpustakaan, Universitas Tadulako</p>
+              </div>
+
+              <div class="email">
+                <a href="mailto:dkmuntad@gmail.com?subject=Hello%20DKMUNTAD!"><i class="bi bi-envelope"></i></a>
+                <h4>Email:</h4>
+                <p>dkmuntad@gmail.com</p>
+              </div>
+
+              <div class="phone">
+                <a href="https://wa.me/+6282239377451"><i class="bi bi-whatsapp"></i></a>
+                <h4>Whatsapp:</h4>
+                <p>082239377451</p>
+              </div>
+
+              <div class="email">
+                <a href="https://www.instagram.com/dkmuntad/"><i class="bi bi-instagram"></i></a>
+                <h4>Instagram:</h4>
+                <p>dkmuntad</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.3932190955243!2d119.89312561475363!3d-0.8363943993898428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d8be93656dcb80d%3A0x64761cb166128881!2sMBKM%20Universitas%20Tadulako!5e0!3m2!1sid!2sid!4v1680243969502!5m2!1sid!2sid" width="100%" height="100%" class="border border-primary rounded" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>DKM UNTAD</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/ -->
+        
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor Files -->
+  <script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main File -->
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script>
+    {% for msg in messages %}
+      {% if msg.tags == "success" %}
+      Swal.fire({
+        
+        icon: 'success',
+        title: 'Sukses',
+        text: '{{ msg }}',
+        timer: 1700,
+        showConfirmButton: false,
+      });
+      {% elif msg.tags == 'warning' %}
+      Swal.fire({
+        
+        icon: 'warning',
+        title: 'Warning',
+        text: '{{ msg }}',
+        timer: 2500,
+        showConfirmButton: false,
+      });
+      {% elif msg.tags == 'error' %}
+      Swal.fire({
+        
+        icon: 'error',
+        title: 'Error',
+        text: '{{ msg }}',
+        timer: 2500,
+        showConfirmButton: false,
+      });
+      {% endif %}
+
+    {% endfor %}
+  </script>
+
+</body>
+
+</html>

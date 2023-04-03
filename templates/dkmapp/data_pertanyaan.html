@@ -1,0 +1,81 @@
+{% extends './navbar.html' %}
+{% load static %}
+{% block javascript %}
+{% endblock %}
+{% block content %}
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Data F.A.Q</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Home</a></li>
+          <li class="breadcrumb-item active">Data F.A.Q</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" name="submit" class="btn btn-primary mb-3">Tambah F.A.Q <i class="bi bi-plus-square"></i></button>
+                            </form>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Nama Penanya</th>
+                                        <th>Pertanyaan</th>
+                                        <th>Jawaban</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Nama Penanya</th>
+                                        <th>Pertanyaan</th>
+                                        <th>Jawaban</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    {% for a in data_pertanyaan %}
+                                    <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{a.nama}}</td>
+                                        <td>{{a.pertanyaan}}</td>
+                                        <td>{{a.jawaban}}</td>
+                                        <td>
+                                            <a href="{% url 'edit-pertanyaan' a.id %}" class="btn btn-warning btn-sm btn-icon"><i class="bi bi-pencil-square"></i></a>
+                                            <form method="POST" action="{% url 'hapus-pertanyaan' a.id %}">
+                                                {% csrf_token %}
+                                                <input name="_method" type="hidden" value="DELETE">
+                                                <button type="submit" class="btn btn-danger btn-sm btn-icon show_confirm"><i class="bi bi-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </main>
+
+  
+  <!-- End #main -->
+
+  
+{% endblock content %}

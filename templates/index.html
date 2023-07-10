@@ -13,7 +13,7 @@
   <!-- Favicons -->
   <link href="{% static 'img/favicon.png' %}" rel="icon">
   <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
-  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <!-- Google Fonts -->
@@ -97,7 +97,7 @@
             <div class="modal-body">
                 {% csrf_token %}
                 <input type="text" class="form-control" name="subject" id="subject" placeholder="Masukkan ID Anggota anda" required="">
-              
+
               </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Save</button>
@@ -130,7 +130,7 @@
 
     </div>
   </header><!-- End Header -->
-  
+
   <!-- ======= Hero Section ======= -->
   <section id="hero">
 
@@ -150,7 +150,7 @@
           <img src="{% static 'img/hero-img.png' %}" class="img-fluid animated" alt="">
         </div>
       </div>
-    </div> 
+    </div>
 
     <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
       <defs>
@@ -275,7 +275,7 @@
                 </div>
                 {% endfor %}
               </div>
-              
+
             </div>
 
           </div>
@@ -284,7 +284,7 @@
     </section>
 
 
-    
+
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">
       <div class="container">
@@ -368,16 +368,16 @@
       </div>
     </section><!-- End Testimonials Section -->
     <section id="team" class="section_team">
-        
+
       <div class="swiper_team mySwiper container" data-aos="zoom-in" data-aos-delay="100">
-        
+
         <div class="swiper-wrapper content">
           {% for a in data_ketua %}
           <div class="swiper-slide card_team">
             <div class="card-content">
-              
+
                 <div class="image">
-                  
+
                   {% if a.photo %}
                   <img src="././media/{{a.photo}}" class="img-fluid" alt="">
                   {% else %}
@@ -390,15 +390,15 @@
                 </div>
                 <div class="media-icons_team">
                   <a href="https://wa.me/+62{{a.phone}}"><i class="fab fa-whatsapp"></i></a>
-                  <a href=""><i class="fab fa-instagram"></i></a>
-                  <a href=""><i class="fab fa-linkedin"></i></a>
+                  <a href="{{a.instagram}}"><i class="fab fa-instagram"></i></a>
+                  <a href="{{a.linkedin}}"><i class="fab fa-linkedin"></i></a>
                 </div>
-                
+
                 <div class="name-profession_team">
                   <span class="name_team">{{a.name}}</span>
                   <span class="profession_team">{{a.jabatan}}</span>
                 </div>
-  
+
 
                 <div class="rating_team" id="hides{{a.id}}">
                   {% for i in "12345" %}
@@ -409,7 +409,7 @@
                     {% endif %}
                   {% endfor %}
                 </div>
-                
+
                 <div id="show{{a.id}}" style="display:none;">
                   <form method="POST" action="{% url 'ulasan' a.id_dkm %}">
                     {% csrf_token %}
@@ -430,7 +430,7 @@
                       <div class="form-group col-md-1">
                         <button type="submit" class="btn btn-sm btn-primary btn-icon" id="submitaja"><i class="bi bi-caret-right"></i></button>
                       </div>
-                      
+
                     </div>
                     </form>
                 </div>
@@ -440,7 +440,7 @@
                     <a class="text-white" href="{% url 'tim' a.id_dkm %}">Our Team</a>
                   </button>
                   <button class="hireMe" data-id="{{a.id}}">Beri Ulasan</button>
-                  
+
                 </div>
                 <script>
                   document.querySelectorAll('.hireMe').forEach(function(button) {
@@ -451,7 +451,7 @@
                     });
                   });
                 </script>
-                
+
                 <script src="{% static 'jquery/jquery.min.js' %}"></script>
                 <script>
                   $(document).ready(function() {
@@ -463,12 +463,12 @@
                         $(this).prevAll().addBack().removeClass('far').addClass('fas');
                       }
                     });
-                    
+
                   });
-                  
-                  
+
+
                 </script>
-                
+
 
             </div>
           </div>
@@ -482,9 +482,9 @@
       <div class="swiper-button-prev"></div>
       <div class="swiper-pagination"></div>
 
-      
+
     </section>
-  
+
 
 
   <!-- Swiper JS -->
@@ -529,7 +529,7 @@
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
-        
+
       });
     </script>
     <script>
@@ -539,13 +539,13 @@
         card.classList.toggle('rotate');
         back.classList.toggle('show-back');
       }
-      
+
       document.querySelector('.aboutMe').addEventListener('click', rotateCard());
-                
+
     </script>
 
 
-    
+
 
 
     <!-- ======= F.A.Q Section ======= -->
@@ -685,7 +685,7 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/ -->
-        
+
       </div>
     </div>
   </footer><!-- End Footer -->
@@ -697,7 +697,7 @@
   <script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
   <script src="{% static 'vendor/aos/aos.js' %}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  
+
   <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
   <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
   <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
@@ -709,7 +709,7 @@
     {% for msg in messages %}
       {% if msg.tags == "success" %}
       Swal.fire({
-        
+
         icon: 'success',
         title: 'Sukses',
         text: '{{ msg }}',
@@ -718,7 +718,7 @@
       });
       {% elif msg.tags == 'warning' %}
       Swal.fire({
-        
+
         icon: 'warning',
         title: 'Warning',
         text: '{{ msg }}',
@@ -727,7 +727,7 @@
       });
       {% elif msg.tags == 'error' %}
       Swal.fire({
-        
+
         icon: 'error',
         title: 'Error',
         text: '{{ msg }}',

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import *
+admin.site.register(DKM)
 admin.site.register(Testimoni)
 admin.site.register(Postingan)
 admin.site.register(Pertanyaan)

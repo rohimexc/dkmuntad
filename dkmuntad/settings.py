@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-m)c6#2-ce4!i2x&&%r*y-iwdj58sc#b-stk386(i8a&aw5@dt@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dkmuntad.pythonanywhere.com']
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dkmapp.apps.DkmappConfig',
-    'widget_tweaks',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
